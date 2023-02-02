@@ -17,9 +17,14 @@ class Invoice {
 const invOne = new Invoice('mario', 'work on the mario website', 250)
 const invTwo = new Invoice('luigi', 'work on the luigi website', 300)
 
+
+
 let invoices: Invoice[] = []
-invoices.push(invOne)
 invoices.push(invTwo)
+invoices.push(invTwo)
+
+console.log(invoices)
+
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
@@ -28,6 +33,8 @@ const type = document.querySelector('#type')! as HTMLSelectElement;
 const toform = document.querySelector('#tofrom')! as HTMLInputElement;
 const details = document.querySelector('#details')! as HTMLInputElement;
 const amount = document.querySelector('#amount')! as HTMLInputElement;
+
+
 
 form.addEventListener('submit', (e:Event) => {
     e.preventDefault()
@@ -38,6 +45,11 @@ form.addEventListener('submit', (e:Event) => {
         details.value,
         amount.valueAsNumber
     )
+
+    const form2 = new Invoice(type.value, toform.value, amount.valueAsNumber)  
+    invoices.push(form2)
+
+    console.log(invoices)
 })
 
 
