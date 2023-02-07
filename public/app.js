@@ -1,35 +1,14 @@
 import { Payments } from './classes/payment.js';
 import { Invoice } from './classes/invoice.js';
-/* let docOne : HasFormatter;
-let docTwo : HasFormatter;
+import { ListTemplate } from './classes/listtemplate.js';
 
-docOne = new Invoice('yoshi', 'web work', 250);
-docTwo = new Payments ('mario', 'plubing work', 200)
-
-let docs: HasFormatter[] = []
-docs.push(docOne)
-docs.push(docTwo)
-
-console.log(docs)
-
-
-const invOne = new Invoice('mario', 'work on the mario website', 250)
-const invTwo = new Invoice('luigi', 'work on the luigi website', 300)
-
-
-
-let invoices: Invoice[] = []
-invoices.push(invOne)
-invoices.push(invTwo)
-
-invoices.forEach(inv => {
-    console.log(inv.client, inv.details, inv.amount, inv.format())
-}) */
 const form = document.querySelector('.new-item-form');
 const type = document.querySelector('#type');
 const toform = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
@@ -40,4 +19,5 @@ form.addEventListener('submit', (e) => {
         doc = new Payments(toform.value, details.value, amount.valueAsNumber);
     }
     console.log(doc);
+    list.render(doc, type.value, 'end');
 });
